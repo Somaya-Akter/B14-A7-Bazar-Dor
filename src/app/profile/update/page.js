@@ -1,0 +1,49 @@
+import Link from "next/link";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+import { ArrowLeft, User } from "lucide-react";
+
+import { auth } from "@/lib/auth";
+import ProfileForm from "@/components/ProfileForm";
+
+export const instant = false;
+
+export default async function UpdateProfilePage() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session?.user) {
+    redirect("/signin");
+  }
+
+  return (
+    <main className="flex min-h-[70vh] items-center justify-center bg-[#f7f8f4] px-4 py-12">
+      <div className="w-full max-w-lg rounded-3xl border border-slate-200 bg-white p-7 shadow-sm sm:p-8">
+        <Link
+          href="/profile"
+          className="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-[#167c4b] hover:underline"
+        >
+          <ArrowLeft size={18} />
+          প্রোফাইলে ফিরে যান
+        </Link>
+
+        <div className="text-center">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#167c4b]/10 text-[#167c4b]">
+            <User size={30} />
+          </div>
+
+          <h1 className="mt-4 text-3xl font-black text-[#162019]">
+            প্রোফাইল আপডেট
+          </h1>
+
+          <p className="mt-2 text-sm text-slate-500">
+            আপনার নাম পরিবর্তন করে তথ্য আপডেট করুন।
+          </p>
+        </div>
+
+        <ProfileForm user={session.user} />
+      </div>
+    </main>
+  );
+}

@@ -1,9 +1,9 @@
+import Link from "next/link";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { User } from "lucide-react";
+import { Mail, Pencil, User } from "lucide-react";
 
 import { auth } from "@/lib/auth";
-import ProfileForm from "@/components/ProfileForm";
 
 export const instant = false;
 
@@ -29,11 +29,43 @@ export default async function ProfilePage() {
           </h1>
 
           <p className="mt-2 text-sm text-slate-500">
-            আপনার অ্যাকাউন্টের তথ্য দেখুন এবং নাম আপডেট করুন।
+            আপনার অ্যাকাউন্টের তথ্য দেখুন।
           </p>
         </div>
 
-        <ProfileForm user={session.user} />
+        <div className="mt-8 space-y-4">
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+            <p className="text-sm font-semibold text-slate-500">নাম</p>
+
+            <div className="mt-2 flex items-center gap-3">
+              <User size={20} className="text-[#167c4b]" />
+
+              <p className="font-semibold text-slate-900">
+                {session.user.name || "নাম পাওয়া যায়নি"}
+              </p>
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+            <p className="text-sm font-semibold text-slate-500">ইমেইল</p>
+
+            <div className="mt-2 flex items-center gap-3">
+              <Mail size={20} className="text-[#167c4b]" />
+
+              <p className="break-all font-medium text-slate-700">
+                {session.user.email}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <Link
+          href="/profile/update"
+          className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-[#167c4b] px-5 py-4 font-bold text-white transition hover:bg-[#10653c]"
+        >
+          <Pencil size={19} />
+          তথ্য আপডেট করুন
+        </Link>
       </div>
     </main>
   );
