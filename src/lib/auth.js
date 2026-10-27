@@ -21,7 +21,8 @@ export const auth = betterAuth({
   account: {
     accountLinking: {
       enabled: true,
-      trustedProviders: ["google"],
+      disableImplicitLinking: false,
+      trustedProviders: ["google", "github", "email-password"],
     },
   },
 
@@ -29,6 +30,7 @@ export const auth = betterAuth({
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      prompt: "select_account",
     },
 
     github: {
