@@ -2,11 +2,11 @@
 
 Bazar Dor is a modern web application for tracking the prices of essential daily goods in Bangladesh. Users can explore product prices by category, compare recent price changes, view market-based information, and access detailed product information.
 
-The application also includes secure authentication using BetterAuth with Email/Password, Google, and GitHub login.
+The application also includes secure authentication using BetterAuth with Email/Password, Google, and GitHub login. 
 
-## Live Website
+## 🌐 Live Website
 
-Live URL will be added after Vercel deployment.
+🔗 https://b14-a7-bazar-dor-six-beta.vercel.app
 
 ## Project Purpose
 
