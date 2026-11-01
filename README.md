@@ -6,7 +6,7 @@ The application also includes secure authentication using BetterAuth with Email/
 
 ## Live Website
 
-Live URL will be added after Vercel deployment.
+ https://b14-a7-bazar-dor-six-beta.vercel.app
 
 ## Project Purpose
 
