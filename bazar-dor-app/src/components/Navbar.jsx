@@ -41,41 +41,34 @@ function CategoryNavigation({ categories }) {
 
   return (
     <div className="border-t border-slate-100">
-      <nav className="hide-scrollbar mx-auto flex max-w-7xl items-center gap-2 overflow-x-auto px-4 py-2.5 sm:px-6 lg:px-8">
-        <Link
-          href="/"
-          className={`shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition ${
-            pathname === "/"
-              ? "bg-[#167c4b] text-white"
-              : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-          }`}
-        >
-          সব পণ্য
-        </Link>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <nav className="hide-scrollbar overflow-x-auto py-2.5">
+          <div className="flex w-max items-center gap-2">
+            {categories.map((category) => {
+              const href = `/category/${category.slug}`;
+              const active = pathname === href;
 
-        {categories.map((category) => {
-          const href = `/category/${category.slug}`;
-          const active = pathname === href;
+              return (
+                <Link
+                  key={category.slug}
+                  href={href}
+                  className={`shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition ${
+                    active
+                      ? "bg-[#167c4b] text-white"
+                      : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                  }`}
+                >
+                  <span className="mr-1">
+                    {category.icon}
+                  </span>
 
-          return (
-            <Link
-              key={category.slug}
-              href={href}
-              className={`shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition ${
-                active
-                  ? "bg-[#167c4b] text-white"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-              }`}
-            >
-              <span className="mr-1">
-                {category.icon}
-              </span>
-
-              {category.name}
-            </Link>
-          );
-        })}
-      </nav>
+                  {category.name}
+                </Link>
+              );
+            })}
+          </div>
+        </nav>
+      </div>
     </div>
   );
 }
@@ -106,7 +99,9 @@ export default function Navbar() {
 
         const data = await response.json();
 
-        setProducts(data);
+        setProducts(
+          Array.isArray(data) ? data : []
+        );
       } catch {
         setProducts([]);
       }
@@ -273,8 +268,8 @@ export default function Navbar() {
                         product.change?.dir ===
                         "up"
                           ? "font-bold text-emerald-300"
-                          : product.change
-                              ?.dir === "down"
+                          : product.change?.dir ===
+                            "down"
                           ? "font-bold text-red-300"
                           : "font-bold text-slate-300"
                       }

@@ -91,7 +91,6 @@ export default function HomeContent() {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <ProductSection
-        badge="দামের পরিবর্তন"
         title="আজ দাম বেড়েছে ▲"
         subtitle="আজকের বাজারে যেসব নিত্যপণ্যের দাম সবচেয়ে বেশি বেড়েছে।"
         products={risers}
@@ -100,7 +99,6 @@ export default function HomeContent() {
       <div className="border-t border-slate-200" />
 
       <ProductSection
-        badge="দামের পরিবর্তন"
         title="আজ দাম কমেছে ▼"
         subtitle="আজকের বাজারে যেসব নিত্যপণ্যের দাম সবচেয়ে বেশি কমেছে।"
         products={fallers}
@@ -110,7 +108,6 @@ export default function HomeContent() {
 
       <ProductSection
         id="সব-পণ্য"
-        badge="সম্পূর্ণ বাজার তালিকা"
         title="সব পণ্য"
         subtitle="আজকের সর্বশেষ বাজারদর, আগের দিনের তুলনায় মূল্য পরিবর্তন এবং এককসহ সব নিত্যপ্রয়োজনীয় পণ্য দেখুন।"
         products={products}

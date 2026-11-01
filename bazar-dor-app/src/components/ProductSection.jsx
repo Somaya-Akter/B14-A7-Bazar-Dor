@@ -8,7 +8,10 @@ export default function ProductSection({
   badge,
 }) {
   return (
-    <section id={id} className="py-12 md:py-16">
+    <section
+      id={id}
+      className="scroll-mt-44 py-12 md:py-16"
+    >
       <div className="mb-8 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
         <div>
           {badge && (
@@ -31,7 +34,10 @@ export default function ProductSection({
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard
+            key={product.id}
+            product={product}
+          />
         ))}
       </div>
     </section>
